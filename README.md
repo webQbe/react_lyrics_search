@@ -38,9 +38,9 @@
    <link rel="stylesheet" href="fontawesome-free-6.6.0-web/css/all.css">
    ```
 
-9. Install NPM package **`Axios`** : 
+9. Install NPM packages: 
     ```
-    npm i axios
+    npm i react-router-dom axios 
     ```
 10. Start Development Server: 
     ```
