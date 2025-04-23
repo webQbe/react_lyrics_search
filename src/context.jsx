@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 // Create new context object
 const Context = React.createContext()
@@ -13,6 +14,25 @@ export const Provider = ({ children }) => { // To provide data to the app
                                 { track: { track_name: '123' } }
                             ],
                         heading: 'Top 10 Tracks'})
+
+  useEffect(() => { /* Run once on component mount */
+   // API Request
+   axios.get(
+        `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/tracks`
+        /* Send GET request to Deezer’s API through a CORS proxy to avoid browser CORS restrictions. */
+      )
+      .then(res => { 
+        /* On Successful Response */
+        const topTracks = res.data.tracks.data             // Array of all trending tracks
+                                            .slice(0, 10); // limit it to the top 10
+      /* Update App State */
+      setState({
+          track_list: topTracks,
+          heading: "Top 10 Tracks"
+        });
+      })
+      .catch(err => console.log(err)); // Error Handling
+  }, [])                          
 
   return (
     <Context.Provider 
