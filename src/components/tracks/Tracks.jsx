@@ -1,6 +1,8 @@
+/* Display tracks */
 import React from 'react'
 import { Consumer } from '../../context'
 import Spinner from '../layout/Spinner'
+import Track from './Track'
 
 const Tracks = () => {
   return (
@@ -10,8 +12,8 @@ const Tracks = () => {
         // Destructure state
         ({ state }) => {  
           
-            // Destructure track_list
-            const { track_list } = state
+            // Destructure track_list & heading
+            const { track_list, heading } = state
 
             // Check if track_list is undefined or empty
             if (track_list === undefined || track_list.length === 0){
@@ -20,10 +22,22 @@ const Tracks = () => {
               return <Spinner />
 
             } else {
+                return (
+                 <>
+                    <h3 className="text-center mb-4">{ heading }</h3>
+                    <div className="row">
+                      {   
+                        // Map over tracks 
+                          track_list.map((trackObj, index) => {
+                            // Render a <Track /> component for each
+                            return <Track key={ index } track={ trackObj }/>
 
-                // Once track_list is populated
-                return <h1>Tracks loaded</h1>
-
+                            /* return keyword is required inside the .map() */
+                        }) 
+                      }
+                    </div>
+                  </>
+                )
             }
         }
       }

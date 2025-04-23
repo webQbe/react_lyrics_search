@@ -23,8 +23,10 @@ export const Provider = ({ children }) => { // To provide data to the app
       )
       .then(res => { 
         /* On Successful Response */
-        const topTracks = res.data.tracks.data             // Array of all trending tracks
-                                            .slice(0, 10); // limit it to the top 10
+        const topTracks = Object.values( // Ensure data is in array format 
+                                res.data.tracks.data.slice(0, 10)
+                          );
+
       /* Update App State */
       setState({
           track_list: topTracks,
