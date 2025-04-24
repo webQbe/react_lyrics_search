@@ -5,6 +5,7 @@ import { Provider } from './context'
 import './App.css'
 import Navbar from './components/layout/Navbar'
 import Index from './components/layout/Index' // To render <Tracks />
+import Lyrics from './components/tracks/Lyrics' 
 
 function App() {
 
@@ -17,6 +18,10 @@ function App() {
           <div className="container">
               <Routes>
                 <Route exact path='/' element={ <Index /> } />
+                <Route 
+                  exact path='/lyrics/track/:id' /* Set up route to Lyrics  */
+                  element={ <Lyrics /> } 
+                />
               </Routes>
           </div>
       </Router>
