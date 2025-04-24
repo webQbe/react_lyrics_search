@@ -18,10 +18,12 @@ function App() {
           <div className="container">
               <Routes>
                 <Route exact path='/' element={ <Index /> } />
-                <Route 
-                  exact path='/lyrics/track/:id' /* Set up route to Lyrics  */
+
+                <Route /* Define route that captures :title as a URL parameter  */
+                  path='/lyrics/track/:title' 
                   element={ <Lyrics /> } 
                 />
+                
               </Routes>
           </div>
       </Router>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Track = ({ track }) => { // Pass track prop from .map() in Tracks.jsx
   
   // Destructure artist
-  const { artist, title, album, id } = track
+  const { artist, title, album } = track
 
   // console.log("Track object:", track); 
   return (
@@ -24,8 +24,12 @@ const Track = ({ track }) => { // Pass track prop from .map() in Tracks.jsx
                   <br />
                   <strong><i className="fas fa-compact-disc"></i>Album</strong>: { album?.title }
                 </p>
-                {/* Route to lyrics page. */}
-                <Link to={`lyrics/track/${id}`} className="btn btn-dark btn-dark btn-block">
+                
+                {/* Linking to the Lyrics Page */}
+                <Link 
+                  to={`lyrics/track/${title}`} // Create a dynamic link based on title of track
+                  className="btn btn-dark btn-dark btn-block"
+                >
                      <i className="fas fa-chevron-right"></i> View Lyrics
                 </Link>
             </div>
