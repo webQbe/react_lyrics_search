@@ -15,11 +15,11 @@
     /* Search for Song */
     useEffect(() => { /* Re-runs whenever title changes */
 
-        // Search Genius API for song using the title
+        // Search Genius API for english lyrics using the title
         const fetchLyricsSearch = async () => {
           try {
             const response = await axios
-                              .get(`https://genius-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(title)}&per_page=1&page=1`, 
+                              .get(`https://genius-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(title)}%20english&per_page=1&page=1`, 
 
                               /* encodeURIComponent(title) ensures special characters (like spaces or symbols) are URL-safe. */
                       {
@@ -111,7 +111,7 @@
                       If the content is not trusted (e.g. from a user), it could pose a security risk (like XSS attacks). 
                     */  
                 />
-  
+
               </div>
              </div>
           </>
