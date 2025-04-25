@@ -1,5 +1,5 @@
  import React, { useState, useEffect } from 'react'
- import { useParams } from 'react-router-dom'
+ import { useParams, Link } from 'react-router-dom'
  import axios from 'axios'
  import Spinner from '../layout/Spinner'
  
@@ -88,16 +88,25 @@
         return <Spinner />
 
       } else {
-        
         // Otherwise, once both objects are available and have keys (i.e. valid data)
-        return <h1>Data returned</h1>
-
+        return (
+          <>  
+             {/* Bootstrap styled button */}
+             <Link to="/" className="btn btn-dark btn-sm mb-4">
+                Go Back
+             </Link>
+             {/* Display track title & artist name inside Bootstrap card header */}
+             <div className="card">
+              <div className="card-header">
+                { trackData.title } by {''} 
+                <span className="text-secondary">
+                  { trackData.primary_artist }
+                </span>
+              </div>
+             </div>
+          </>
+        )
       }
-   return (
-     <div>
-        <h1>Lyrics</h1>
-     </div>
-   )
  }
  
  export default Lyrics
