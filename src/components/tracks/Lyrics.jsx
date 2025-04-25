@@ -97,11 +97,21 @@
              </Link>
              {/* Display track title & artist name inside Bootstrap card header */}
              <div className="card">
-              <div className="card-header">
+              <h5 className="card-header">
                 { trackData.title } by {''} 
                 <span className="text-secondary">
                   { trackData.primary_artist }
                 </span>
+              </h5>
+              <div className="card-body">
+                <p className="card-text"
+                    dangerouslySetInnerHTML={{ __html: lyricsData.body.html }}
+                    /* dangerouslySetInnerHTML bypasses React’s default HTML escaping,    meaning:
+                      It inserts raw HTML directly into the DOM.
+                      If the content is not trusted (e.g. from a user), it could pose a security risk (like XSS attacks). 
+                    */  
+                />
+  
               </div>
              </div>
           </>
