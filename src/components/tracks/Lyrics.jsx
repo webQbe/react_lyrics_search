@@ -1,11 +1,16 @@
  import React, { useState, useEffect } from 'react'
  import { useParams } from 'react-router-dom'
  import axios from 'axios'
+ import Spinner from '../layout/Spinner'
  
  const Lyrics = () => {
 
   const { title } = useParams() // Grab song title from URL 
-  const [songId, setSongId] = useState() // Store songId
+
+  /* State Initialization */
+  const [ songId, setSongId ] = useState() // Store songId 
+  const [ lyricsData, setLyricsData ] = useState() // for storing the actual song lyrics
+  const [ trackData, setTrackData ] = useState() // for storing metadata or tracking info
 
     /* Search for Song */
     useEffect(() => { /* Re-runs whenever title changes */
@@ -29,7 +34,7 @@
             if (response.data.hits.length > 0) {
               const songId = response.data.hits[0].result.id;
               console.log('Song ID:', songId);
-              setSongId(songId) // Update the state
+              setSongId(songId) // Update songId state
             }
             
           } catch (error) {
@@ -60,6 +65,9 @@
                     });
           console.log('API response:', response.data)
           
+          setLyricsData(response.data.lyrics.lyrics)       // Store lyrics info
+          setTrackData(response.data.lyrics.tracking_data) // Store tracking info like title, artist, etc.
+          
         } catch (error) {
           console.error('Error fetching lyrics:', error)
         }
@@ -68,6 +76,23 @@
       if (songId) fetchSongLyrics()
     }, [songId]) 
 
+    /* Conditional Rendering with Loading State */
+    if ( 
+        // Either trackData or lyricsData is undefined (not yet fetched)
+        trackData === undefined || 
+        lyricsData === undefined || 
+        // Or an empty object {} (fetched but no content)
+        Object.keys(trackData).length === 0 || Object.keys(lyricsData).length === 0) 
+      {
+        // Render loading spinner component
+        return <Spinner />
+
+      } else {
+        
+        // Otherwise, once both objects are available and have keys (i.e. valid data)
+        return <h1>Data returned</h1>
+
+      }
    return (
      <div>
         <h1>Lyrics</h1>
