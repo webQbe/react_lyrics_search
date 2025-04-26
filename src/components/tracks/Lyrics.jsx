@@ -8,81 +8,154 @@
   const { title } = useParams() // Grab song title from URL 
 
   /* State Initialization */
-  const [ songId, setSongId ] = useState() // Store songId 
-  const [ lyricsData, setLyricsData ] = useState() // for storing the actual song lyrics
-  const [ trackData, setTrackData ] = useState() // for storing metadata or tracking info
+  const [ spotifyId, setSpotifyId ] = useState()    // Store spotifyId, needed for fetching lyricsData 
+  const [ shazamId, setShazamId ] = useState()      // Store shazamId, needed for fetching trackData
+  const [ lyricsData, setLyricsData ] = useState()  // Store actual song lyrics
+  const [ trackData, setTrackData ] = useState()    // Store track's metadata
 
-    /* Search for Song */
-    useEffect(() => { /* Re-runs whenever title changes */
+    /* First useEffect: Search Song IDs */
+    useEffect(() => { /* Triggered whenever title changes (new URL param) */
 
-        // Search Genius API for english lyrics using the title
-        const fetchLyricsSearch = async () => {
+        // Get Spotify ID for the song
+        const fetchSpotifyTrackId = async () => {
           try {
             const response = await axios
-                              .get(`https://genius-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(title)}%20english&per_page=1&page=1`, 
+                              .get(`https://spotify-scraper.p.rapidapi.com/v1/search?term=${encodeURIComponent(title)}&type=track&limit=1 `, 
 
                               /* encodeURIComponent(title) ensures special characters (like spaces or symbols) are URL-safe. */
                       {
                         headers: { /* Request Headers */
                           'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY, // API Key
-                          'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com', 
+                          'X-RapidAPI-Host': 'spotify-scraper.p.rapidapi.com', 
                         }
                       });
             // console.log('API response:', response.data)
 
-            // Extract songId from the response
-            if (response.data.hits.length > 0) {
-              const songId = response.data.hits[0].result.id;
-              console.log('Song ID:', songId);
-              setSongId(songId) // Update songId state
-            }
+            
+            if ( // Check if results returned
+                 response.data.tracks && 
+                 response.data.tracks.items && 
+                 response.data.tracks.items.length > 0 ) 
+              {
+                const spotifyId = response.data.tracks.items[0].id;
+                console.log('Spotify ID:', spotifyId);
+                setSpotifyId(spotifyId) // Update spotifyId state
+              } 
+              else {
+                // Log a warning instead of crashing 
+                console.warn('No track key found in Spotify API response.')
+              }
             
           } catch (error) {
-            console.error('Error fetching results:', error)
+            console.error('Error fetching spotifyId:', error)
           }
         }
 
-        // Run if title is not undefined 
-        if (title) fetchLyricsSearch()
+      /* Get Shazam track key for the song */
+      const fetchShazamTrackId = async () => {
+        try {
+          const response = await axios
+                            .get(`https://shazam-core.p.rapidapi.com/v1/search/multi?offset=0&search_type=SONGS&query=${encodeURIComponent(title)}`, 
+                              {
+                                headers: { 
+                                  'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+                                  'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com', 
+                                }
+                              })
+
+          console.log('Shazam-core search API response:', response.data)
+
+           // Extract trackKey from the response
+           if ( response.data.tracks && 
+                response.data.tracks.hits && 
+                response.data.tracks.hits.length > 0 && 
+                response.data.tracks.hits[0].track )
+                {
+                  const trackKey = response.data.tracks.hits[0].track.key
+                  console.log('Shazam track key:', trackKey)
+                  setShazamId(trackKey) // Update trackKey state
+
+                } else {
+                  // Log a warning instead of crashing 
+                  console.warn('No track key found in Shazam API response.')
+                }
+          
+        } catch (error) {
+          console.error('Error searching shazam-core:', error)
+        }
+      }
+
+      if (title) {
+          fetchSpotifyTrackId()
+          fetchShazamTrackId()
+        }
 
      }, [title]) 
 
-    /* Calling both fetch functions in one useEffect causes unwanted re-renders */
+    /* Calling all fetch functions in one useEffect causes unwanted re-renders */
 
-    /* Fetch Song Lyrics */
-    useEffect(() => { // Runs only when songId is set by the previous effect
+    /* Second useEffect: Fetch Lyrics */
+    useEffect(() => { // Triggered whenever spotifyId changes (after it's fetched)
 
-      // Use songId to get actual lyrics
+      // Use Spotify ID to fetch lyrics text
       const fetchSongLyrics = async () => {
         try {
           const response = await axios
-                            .get(`https://genius-lyrics1.p.rapidapi.com/song/lyrics/?id=${songId}`, 
+                            .get(`https://spotify-scraper.p.rapidapi.com/v1/track/lyrics?trackId=${spotifyId}&format=json`, 
                     {
                       headers: { 
                         'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
-                        'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com', 
+                        'X-RapidAPI-Host': 'spotify-scraper.p.rapidapi.com', 
                       }
                     });
-          console.log('API response:', response.data)
+          console.log('Lyrics API response:', response.data)
           
-          setLyricsData(response.data.lyrics.lyrics)       // Store lyrics info
-          setTrackData(response.data.lyrics.tracking_data) // Store tracking info like title, artist, etc.
+          setLyricsData(response.data) // Update lyricsData state        
           
         } catch (error) {
           console.error('Error fetching lyrics:', error)
         }
       }
 
-      if (songId) fetchSongLyrics()
-    }, [songId]) 
+      if (spotifyId) fetchSongLyrics()
+    }, [spotifyId]) 
+
+
+    /* Third useEffect: Fetch Track Data */    
+    useEffect(() => {  // Triggered whenever shazamId changes
+
+          // Use Shazam ID to fetch detailed track metadata
+          const fetchTrackData = async () => {
+            try {
+              const response = await axios
+                                .get(`https://shazam-core.p.rapidapi.com/v1/tracks/details?track_id=${shazamId}`, 
+                        {
+                          headers: { 
+                            'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+                            'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com', 
+                          }
+                        });
+              console.log('Track Data API response:', response.data)
+              
+              setTrackData(response.data) // Update trackData state       
+              
+            } catch (error) {
+              console.error('Error fetching track data:', error)
+            }
+          }
+    
+          if (shazamId) fetchTrackData()
+        }, [shazamId]) 
+        
+   
 
     /* Conditional Rendering with Loading State */
     if ( 
         // Either trackData or lyricsData is undefined (not yet fetched)
         trackData === undefined || 
-        lyricsData === undefined || 
+        lyricsData === undefined  || 
         // Or an empty object {} (fetched but no content)
-        Object.keys(trackData).length === 0 || Object.keys(lyricsData).length === 0) 
+        Object.keys(trackData).length === 0 || Object.keys(lyricsData).length === 0 )  
       {
         // Render loading spinner component
         return <Spinner />
@@ -100,20 +173,19 @@
               <h5 className="card-header">
                 { trackData.title } by {''} 
                 <span className="text-secondary">
-                  { trackData.primary_artist }
+                  { trackData.artists[0].alias }
                 </span>
               </h5>
               <div className="card-body">
                 <p className="card-text"
-                    dangerouslySetInnerHTML={{ __html: lyricsData.body.html }}
+                    dangerouslySetInnerHTML={{ __html: lyricsData }}
                     /* dangerouslySetInnerHTML bypasses React’s default HTML escaping,    meaning:
                       It inserts raw HTML directly into the DOM.
                       If the content is not trusted (e.g. from a user), it could pose a security risk (like XSS attacks). 
                     */  
                 />
-
               </div>
-             </div>
+             </div>]
           </>
         )
       }

@@ -1,0 +1,49 @@
+{
+    "status": true,
+    "errorId": "Success",
+    "tracks": {
+      "totalCount": 107,
+      "items": [
+        {
+          "type": "track",
+          "id": "7AgMX97ljLm9BzszyyXEYZ",
+          "name": "Jazz (We've Got)",
+          "shareUrl": "https://open.spotify.com/track/7AgMX97ljLm9BzszyyXEYZ",
+          "explicit": true,
+          "durationMs": 250240,
+          "durationText": "04:10",
+          "artists": [
+            {
+              "type": "artist",
+              "id": "09hVIj6vWgoCDtT03h8ZCa",
+              "name": "A Tribe Called Quest",
+              "shareUrl": "https://open.spotify.com/artist/09hVIj6vWgoCDtT03h8ZCa"
+            }
+          ],
+          "album": {
+            "type": "album",
+            "id": "1p12OAWwudgMqfMzjMvl2a",
+            "name": "The Low End Theory",
+            "shareUrl": "https://open.spotify.com/album/1p12OAWwudgMqfMzjMvl2a",
+            "cover": [
+              {
+                "url": "https://i.scdn.co/image/ab67616d00004851f38c6b37a21334e22005b1f7",
+                "width": 64,
+                "height": 64
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d00001e02f38c6b37a21334e22005b1f7",
+                "width": 300,
+                "height": 300
+              },
+              {
+                "url": "https://i.scdn.co/image/ab67616d0000b273f38c6b37a21334e22005b1f7",
+                "width": 640,
+                "height": 640
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
