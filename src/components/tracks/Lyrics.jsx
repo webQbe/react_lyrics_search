@@ -183,7 +183,26 @@
                     {/* Render lyrics inside <pre> to preserve line breaks */}
                     <pre className="card-text">{ fullLyrics }</pre>
               </div>
-             </div>]
+             </div>
+
+             {/* Display Track Info */}
+             <ul className="list-group mt-3">
+              <li className="list-group-item">
+                <strong>Album name:</strong> { trackData.sections[0].metadata[0].text }
+              </li>
+              <li className="list-group-item">
+                <strong>Song genre:</strong> {' '} 
+                { trackData.genres.primary }
+              </li>
+              <li className="list-group-item">
+                <strong>Explicit words:</strong>{' '}
+                { trackData.hub.explicit ? 'Yes' : 'No' } 
+              </li>
+              <li className="list-group-item">
+                <strong>Release date:</strong>{' '}
+                { trackData.releasedate } 
+              </li>
+             </ul>
           </>
         )
       }
