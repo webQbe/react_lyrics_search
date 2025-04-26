@@ -161,7 +161,10 @@
         return <Spinner />
 
       } else {
-        // Otherwise, once both objects are available and have keys (i.e. valid data)
+
+        // Join all the text fields in lyricsData together, separated by a line break (\n).
+        const fullLyrics = lyricsData.map(line => line.text).join('\n');
+
         return (
           <>  
              {/* Bootstrap styled button */}
@@ -173,17 +176,12 @@
               <h5 className="card-header">
                 { trackData.title } by {''} 
                 <span className="text-secondary">
-                  { trackData.artists[0].alias }
+                  { trackData.subtitle }
                 </span>
               </h5>
               <div className="card-body">
-                <p className="card-text"
-                    dangerouslySetInnerHTML={{ __html: lyricsData }}
-                    /* dangerouslySetInnerHTML bypasses React’s default HTML escaping,    meaning:
-                      It inserts raw HTML directly into the DOM.
-                      If the content is not trusted (e.g. from a user), it could pose a security risk (like XSS attacks). 
-                    */  
-                />
+                    {/* Render lyrics inside <pre> to preserve line breaks */}
+                    <pre className="card-text">{ fullLyrics }</pre>
               </div>
              </div>]
           </>
