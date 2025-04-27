@@ -4,16 +4,31 @@ import axios from 'axios'
 // Create new context object
 const Context = React.createContext()
 
+/* Reducer is how you modify the global state */
+const reducer = (state, action) => { 
+  switch(action.type){
+    case 'SWITCH_TRACKS': // Action Type
+      return {
+        ...state,
+        track_list: action.payload, // Replace current track_list with whatever you pass in action.payload
+        heading: 'Search Results'   // Change heading to "Search Results"
+      }
+      default:
+        return state
+  }
+}
+
 /* Provider Component */
 export const Provider = ({ children }) => { // To provide data to the app
 
   // Create shared state and a way to update it 
   const [state, setState] = useState({
-                        track_list: [
-                                { track: { track_name: 'abc' } },
-                                { track: { track_name: '123' } }
-                            ],
-                        heading: 'Top 10 Tracks'})
+                                track_list: [],
+                                heading: 'Top 10 Tracks',
+                                // Init dispatch (in Provider)
+                                dispatch: action => setState(state => reducer(state, action))
+                                /* dispatch lets you trigger the reducer to change your global state manually, anywhere inside a Consumer */
+                              })
 
   useEffect(() => { /* Run once on component mount */
    // API Request

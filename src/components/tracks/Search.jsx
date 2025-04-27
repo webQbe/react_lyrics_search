@@ -6,13 +6,39 @@ const Search = () => {
 
     const [ trackTitle, setTrackTitle ] = useState('') // To store search input value (trackTitle starts empty)
 
+    const findTrack = (e) => {
+        e.preventDefault(); // stop form from refreshing the page
+
+              const fetchShazamResults = async () => {
+                try {
+                  // Call Shazam API to search for song using trackTitle
+                  const response = await axios
+                                    .get(`https://shazam-core.p.rapidapi.com/v1/search/multi?offset=0&search_type=SONGS&query=${encodeURIComponent(trackTitle)}`, 
+                                      {
+                                        headers: { 
+                                          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
+                                          'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com', 
+                                        }
+                                      })
+
+                  // Log response data                    
+                  console.log('Shazam-core search API response:', response.data)
+                  
+                } catch (error) {
+                  console.error('Error searching shazam-core:', error)
+                }  
+              }
+
+              fetchShazamResults()
+    }
+
   return (
     <Consumer>
         {/* <Consumer> expects a function as a child  */}
         { 
             // the function receives {state} (coming from app's context)
             ({ state }) => { 
-
+                console.log(state)
                 return (
                     <div className="card card-body mb-4 p-4">
                         {/* Bootstrap card with padding and margin */}
