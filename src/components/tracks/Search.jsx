@@ -4,7 +4,7 @@ import { Consumer } from '../../context' // To access global state
 
 const Search = () => {
 
-    const [ trackTitle, setTrackTitle ] = useState() // To store search input value
+    const [ trackTitle, setTrackTitle ] = useState('') // To store search input value (trackTitle starts empty)
 
   return (
     <Consumer>
@@ -24,6 +24,28 @@ const Search = () => {
 
                         {/*  Smaller centered paragraph */}
                         <p className="lead text-center">Get the lyrics for any song</p>
+
+                        {/* Search Form */}   
+                        <form onSubmit={findTrack}>                 
+                            <div className="form-group">
+                                {/* Search text input */}
+                                <input 
+                                    type="text" 
+                                    className="form-control form-control lg" // big input
+                                    placeholder="Song title..."
+                                    name="trackTitle"
+                                    value={ trackTitle }
+                                    onChange={
+                                         // Update local state trackTitle whenever user types
+                                        (e) => setTrackTitle(e.target.value)
+                                    }
+                                />
+                            </div>
+                            {/* Blue color large submit button */}
+                            <button type='submit' className="btn btn-primary btn-lg btn-block mb-5">
+                               Get Track Lyrics         
+                            </button>
+                        </form>
                     </div>
                 )
         }}
