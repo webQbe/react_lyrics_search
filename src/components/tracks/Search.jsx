@@ -34,7 +34,9 @@ const Search = () => {
                                   type: 'SEARCH_TRACKS',
                                   payload: response.data.tracks.items
                                 })
-                                   
+                                
+                                setTrackTitle('') // Clear search input value
+
                           } catch (error) {
                             console.error('Error searching Spotify API:', error)
                           }  
