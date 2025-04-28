@@ -2,10 +2,11 @@
 
 - Building a React App to find lyrics for songs
 - Using **Context API** for State Management *(Instead of Redux)*
-- Using 3rd-Party API
+- Using **Deezer**, **Spotify Scraper**, and **Shazam Core** APIs
 - Creating a **Search Form**
 - Displaying **Top 10 Tracks** on the landing page 
-- Search results include Artist, Track Name, Album, View Lyrics button 
+- **Top 10 Tracks** & **Search results** include `artist`, `track name`, `album`, `view lyrics` button 
+- **Lyrics page** displays `track name` with `artist name`, `lyrics`, `album name`, `song genre`, availability of `explicit words`, and `release date`
 
 ## Getting Started
 
@@ -47,3 +48,6 @@
     npm run dev 
     ```
 
+11. Sign up to **Deezer API** at : `https://developers.deezer.com/api`
+12. Subscribe to **Spotify Scraper API** on Rapidapi.com : `https://rapidapi.com/DataFanatic/api/spotify-scraper/`
+13. Subscribe to **Shazam Core API**: `https://rapidapi.com/tipsters/api/shazam-core/`
