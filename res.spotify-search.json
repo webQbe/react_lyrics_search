@@ -1,0 +1,295 @@
+{
+  "status": true,
+  "errorId": "Success",
+  "tracks": {
+    "totalCount": 118,
+    "items": [
+      {
+        "type": "track",
+        "id": "5tp5lixxnFoKu6WAVBri75",
+        "name": "Jazz",
+        "shareUrl": "https://open.spotify.com/track/5tp5lixxnFoKu6WAVBri75",
+        "explicit": true,
+        "durationMs": 152958,
+        "durationText": "02:32",
+        "artists": [
+          {
+            "type": "artist",
+            "id": "4uKEP0JYfpFtngWlgViewd",
+            "name": "Lil Double 0",
+            "shareUrl": "https://open.spotify.com/artist/4uKEP0JYfpFtngWlgViewd"
+          }
+        ],
+        "album": {
+          "type": "album",
+          "id": "473RR17P3qtAmh22uLUqhX",
+          "name": "Walk Down World",
+          "shareUrl": "https://open.spotify.com/album/473RR17P3qtAmh22uLUqhX",
+          "cover": [
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000485179db2cf3559200d159bb1246",
+              "width": 64,
+              "height": 64
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00001e0279db2cf3559200d159bb1246",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000b27379db2cf3559200d159bb1246",
+              "width": 640,
+              "height": 640
+            }
+          ]
+        }
+      },
+      {
+        "type": "track",
+        "id": "7AgMX97ljLm9BzszyyXEYZ",
+        "name": "Jazz (We've Got)",
+        "shareUrl": "https://open.spotify.com/track/7AgMX97ljLm9BzszyyXEYZ",
+        "explicit": true,
+        "durationMs": 250240,
+        "durationText": "04:10",
+        "artists": [
+          {
+            "type": "artist",
+            "id": "09hVIj6vWgoCDtT03h8ZCa",
+            "name": "A Tribe Called Quest",
+            "shareUrl": "https://open.spotify.com/artist/09hVIj6vWgoCDtT03h8ZCa"
+          }
+        ],
+        "album": {
+          "type": "album",
+          "id": "1p12OAWwudgMqfMzjMvl2a",
+          "name": "The Low End Theory",
+          "shareUrl": "https://open.spotify.com/album/1p12OAWwudgMqfMzjMvl2a",
+          "cover": [
+            {
+              "url": "https://i.scdn.co/image/ab67616d00004851f38c6b37a21334e22005b1f7",
+              "width": 64,
+              "height": 64
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00001e02f38c6b37a21334e22005b1f7",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000b273f38c6b37a21334e22005b1f7",
+              "width": 640,
+              "height": 640
+            }
+          ]
+        }
+      },
+      {
+        "type": "track",
+        "id": "06SYfhYSo9iY3txHE6W9Dl",
+        "name": "jazz is for ordinary people",
+        "shareUrl": "https://open.spotify.com/track/06SYfhYSo9iY3txHE6W9Dl",
+        "explicit": false,
+        "durationMs": 164000,
+        "durationText": "02:44",
+        "artists": [
+          {
+            "type": "artist",
+            "id": "3k3RY7kR8f0vp8Cq27P141",
+            "name": "berlioz",
+            "shareUrl": "https://open.spotify.com/artist/3k3RY7kR8f0vp8Cq27P141"
+          }
+        ],
+        "album": {
+          "type": "album",
+          "id": "5itYNW6UW1VvJO7j9dRn2S",
+          "name": "jazz is for ordinary people",
+          "shareUrl": "https://open.spotify.com/album/5itYNW6UW1VvJO7j9dRn2S",
+          "cover": [
+            {
+              "url": "https://i.scdn.co/image/ab67616d000048518ca839da6f057d13cd3881f2",
+              "width": 64,
+              "height": 64
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00001e028ca839da6f057d13cd3881f2",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000b2738ca839da6f057d13cd3881f2",
+              "width": 640,
+              "height": 640
+            }
+          ]
+        }
+      },
+      {
+        "type": "track",
+        "id": "7hQJA50XrCWABAu5v6QZ4i",
+        "name": "Don't Stop Me Now - Remastered 2011",
+        "shareUrl": "https://open.spotify.com/track/7hQJA50XrCWABAu5v6QZ4i",
+        "explicit": false,
+        "durationMs": 209413,
+        "durationText": "03:29",
+        "artists": [
+          {
+            "type": "artist",
+            "id": "1dfeR4HaWDbWqFHLkxsg1d",
+            "name": "Queen",
+            "shareUrl": "https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d"
+          }
+        ],
+        "album": {
+          "type": "album",
+          "id": "21HMAUrbbYSj9NiPPlGumy",
+          "name": "Jazz (Deluxe Remastered Version)",
+          "shareUrl": "https://open.spotify.com/album/21HMAUrbbYSj9NiPPlGumy",
+          "cover": [
+            {
+              "url": "https://i.scdn.co/image/ab67616d00004851008b06ec71019afd70153889",
+              "width": 64,
+              "height": 64
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00001e02008b06ec71019afd70153889",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000b273008b06ec71019afd70153889",
+              "width": 640,
+              "height": 640
+            }
+          ]
+        }
+      },
+      {
+        "type": "track",
+        "id": "3jbnpv6yDbZGruKmPFu54k",
+        "name": "Jazzy Juice",
+        "shareUrl": "https://open.spotify.com/track/3jbnpv6yDbZGruKmPFu54k",
+        "explicit": false,
+        "durationMs": 156995,
+        "durationText": "02:36",
+        "artists": [
+          {
+            "type": "artist",
+            "id": "7wi9hFEFp89xxCgyjlNMaS",
+            "name": "KingSammelot",
+            "shareUrl": "https://open.spotify.com/artist/7wi9hFEFp89xxCgyjlNMaS"
+          }
+        ],
+        "album": {
+          "type": "album",
+          "id": "67u9OObiVBJCpSlmqlPljx",
+          "name": "Jazzy Juice",
+          "shareUrl": "https://open.spotify.com/album/67u9OObiVBJCpSlmqlPljx",
+          "cover": [
+            {
+              "url": "https://i.scdn.co/image/ab67616d00004851cf97e39859acb7a873bccb01",
+              "width": 64,
+              "height": 64
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00001e02cf97e39859acb7a873bccb01",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000b273cf97e39859acb7a873bccb01",
+              "width": 640,
+              "height": 640
+            }
+          ]
+        }
+      },
+      {
+        "type": "track",
+        "id": "6YQR5USsJok1aievRkLeaA",
+        "name": "Jazz on the Clock!!",
+        "shareUrl": "https://open.spotify.com/track/6YQR5USsJok1aievRkLeaA",
+        "explicit": false,
+        "durationMs": 184821,
+        "durationText": "03:04",
+        "artists": [
+          {
+            "type": "artist",
+            "id": "1kFkuPkfE1z3STtqLNK5s1",
+            "name": "Luxiem",
+            "shareUrl": "https://open.spotify.com/artist/1kFkuPkfE1z3STtqLNK5s1"
+          }
+        ],
+        "album": {
+          "type": "album",
+          "id": "5roSf9yyfxN0D97xtOsoEx",
+          "name": "Jazz on the Clock!!",
+          "shareUrl": "https://open.spotify.com/album/5roSf9yyfxN0D97xtOsoEx",
+          "cover": [
+            {
+              "url": "https://i.scdn.co/image/ab67616d00004851fd29172c24fedcf76cb8ef55",
+              "width": 64,
+              "height": 64
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00001e02fd29172c24fedcf76cb8ef55",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000b273fd29172c24fedcf76cb8ef55",
+              "width": 640,
+              "height": 640
+            }
+          ]
+        }
+      },
+      {
+        "type": "track",
+        "id": "4vN8KsOFRqX2mAHWZrrYXR",
+        "name": "Vicious",
+        "shareUrl": "https://open.spotify.com/track/4vN8KsOFRqX2mAHWZrrYXR",
+        "explicit": false,
+        "durationMs": 135000,
+        "durationText": "02:15",
+        "artists": [
+          {
+            "type": "artist",
+            "id": "7GlhBPosLYBE0z2Ft3drxl",
+            "name": "The Fun Squad",
+            "shareUrl": "https://open.spotify.com/artist/7GlhBPosLYBE0z2Ft3drxl"
+          },
+          {
+            "type": "artist",
+            "id": "0P9cTrFMXCX5qpR4lcu2o3",
+            "name": "Jazzy Skye",
+            "shareUrl": "https://open.spotify.com/artist/0P9cTrFMXCX5qpR4lcu2o3"
+          }
+        ],
+        "album": {
+          "type": "album",
+          "id": "6YhcmwS2uV36JiKGqAposJ",
+          "name": "Vicious",
+          "shareUrl": "https://open.spotify.com/album/6YhcmwS2uV36JiKGqAposJ",
+          "cover": [
+            {
+              "url": "https://i.scdn.co/image/ab67616d000048514dd9792b60df8c8286485818",
+              "width": 64,
+              "height": 64
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d00001e024dd9792b60df8c8286485818",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "url": "https://i.scdn.co/image/ab67616d0000b2734dd9792b60df8c8286485818",
+              "width": 640,
+              "height": 640
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+    "status": true,
+    "errorId": "Success",
+    "type": "chart",
+    "id": "",
+    "title": "",
+    "description": "",
+    "date": "2022-07-07",
+    "tracks": [
+      {
+        "type": "track",
+        "id": "",
+        "name": "",
+        "shareUrl": "https://...",
+        "artists": [
+          {
+            "type": "artist",
+            "id": "",
+            "name": "",
+            "shareUrl": "https://..."
+          }
+        ],
+        "album": {
+          "type": "album",
+          "label": "",
+          "date": "",
+          "cover": [
+            {
+              "url": "https://...",
+              "width": 640,
+              "height": 640
+            }
+          ]
+        },
+        "chartData": {
+          "currentRank": 1,
+          "previousRank": 3,
+          "peakRank": 1,
+          "peakDate": "2022-06-09",
+          "entryRank": 4,
+          "entryDate": "2022-06-02",
+          "appearancesOnChart": 6,
+          "consecutiveAppearancesOnChart": 6
+        }
+      }
+    ]
+  }

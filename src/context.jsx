@@ -1,66 +1,70 @@
-import React, { useState, useEffect } from 'react'
+/* Global State Setup */
+import React, { useState, useEffect, createContext, useReducer } from 'react'
 import axios from 'axios'
 
-// Create new context object
-const Context = React.createContext()
+// Create a React Context to store the app's global data
+const Context = createContext()
+
 
 /* Reducer is how you modify the global state */
 const reducer = (state, action) => { 
+  // Define how the state should change based on different action.type
   switch(action.type){
-    case 'SWITCH_TRACKS': // Action Type
+    case 'TOP_TRACKS': // Replace track_list with the API's top tracks and change heading
       return {
         ...state,
-        track_list: action.payload, // Replace current track_list with whatever you pass in action.payload
-        heading: 'Search Results'   // Change heading to "Search Results"
+        track_list: action.payload, 
+        heading: 'Top 10 Tracks'   
+      }
+    case 'SEARCH_TRACKS': // Replace track_list with search results and change heading
+      return {
+        ...state,
+        track_list: action.payload,
+        heading: 'Search Results'
       }
       default:
         return state
   }
 }
 
-/* Provider Component */
-export const Provider = ({ children }) => { // To provide data to the app
+// Initial state
+const initState = {
+  track_list: [],
+  heading: 'Top 10 Tracks'
+}
 
-  // Create shared state and a way to update it 
-  const [state, setState] = useState({
-                                track_list: [],
-                                heading: 'Top 10 Tracks',
-                                // Init dispatch (in Provider)
-                                dispatch: action => setState(state => reducer(state, action))
-                                /* dispatch lets you trigger the reducer to change your global state manually, anywhere inside a Consumer */
-                              })
+/* Provider Component */
+export const Provider = ({ children }) => { 
+
+  // Init global state
+  const [state, dispatch] = useReducer(reducer, initState)
+  /* 'state' holds the current data (like track_list, heading)
+     'dispatch' is how you update that data */
 
   useEffect(() => { /* Run once on component mount */
-   // API Request
+
+   // API Request to fetch top 10 tracks
    axios.get(
         `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/tracks`
         /* Send GET request to Deezer’s API through a CORS proxy to avoid browser CORS restrictions. */
       )
       .then(res => { 
-        /* On Successful Response */
-        //console.log(res.data)
-        const topTracks = Object.values( // Ensure data is in array format 
-                                res.data.tracks.data.slice(0, 10)
-                          );
-
-      /* Update App State */
-      setState({
-          track_list: topTracks,
-          heading: "Top 10 Tracks"
-        });
+          // Dispatch TOP_TRACKS to update the state.track_list
+          dispatch({
+              type: 'TOP_TRACKS',
+              payload: Object.values(res.data.tracks.data)
+            });
       })
       .catch(err => console.log(err)); // Error Handling
-  }, [])                          
+  }, []) 
 
+  /* Return the Provider to wrap the whole app and provide { state, dispatch } to all child components */
   return (
-    <Context.Provider 
-        value={{ state, setState }} /* Pass the state to the entire app */
-    > 
+    <Context.Provider value={{ state, dispatch }}> 
         { children } 
-        {/* The children prop ensures whatever you wrap with <Provider> will have access to this shared state. */}
     </Context.Provider>
   )
 }
 
 export const Consumer = Context.Consumer // To consume the data in child components.
-export default Context
+export { Context }
