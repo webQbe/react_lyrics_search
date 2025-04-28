@@ -51,3 +51,9 @@
 11. Sign up to **Deezer API** at : `https://developers.deezer.com/api`
 12. Subscribe to **Spotify Scraper API** on Rapidapi.com : `https://rapidapi.com/DataFanatic/api/spotify-scraper/`
 13. Subscribe to **Shazam Core API**: `https://rapidapi.com/tipsters/api/shazam-core/`
+14. Create `.env` file in project root directory to store the API key from **Rapidapi.com**:
+    1. Add this to .env file:
+        ```
+        VITE_RAPIDAPI_KEY=REPLACE_WITH_YOUR_API_KEY_XXXXXXXXXXXXXXXXXXXXXXXX
+        ```
+    2. Add `.env` file to `.gitignore` file
