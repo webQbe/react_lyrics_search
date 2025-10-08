@@ -1,5 +1,7 @@
 # React-ContextAPI Lyric Search App
+This repo is an adaptation of [React Lyric Search App (Context API)](https://www.youtube.com/playlist?list=PLillGF-RfqbaxgxkKgKk1XlJAVCX31xRI) by Brad Traversy. 
 
+I followed the tutorial to learn followings:
 - Building a React App to find lyrics for songs
 - Using **Context API** for State Management *(Instead of Redux)*
 - Using **Deezer**, **Spotify Scraper**, and **Shazam Core** APIs
@@ -7,6 +9,10 @@
 - Displaying **Top 10 Tracks** on the landing page 
 - **Top 10 Tracks** & **Search results** include `artist`, `track name`, `album`, `view lyrics` button 
 - **Lyrics page** displays `track name` with `artist name`, `lyrics`, `album name`, `song genre`, availability of `explicit words`, and `release date`
+
+## What I changed
+- Substituted **Deezer**, **Spotify Scraper**, and **Shazam Core** API combination for **Musixmatch** public API which was unavailable. 
+- Updated code for **React Router v6**
 
 ## Getting Started
 
@@ -57,3 +63,11 @@
         VITE_RAPIDAPI_KEY=REPLACE_WITH_YOUR_API_KEY_XXXXXXXXXXXXXXXXXXXXXXXX
         ```
     2. Add `.env` file to `.gitignore` file
+
+
+## Credits
+Original tutorial: [React Lyric Search App (Context API)](https://www.youtube.com/playlist?list=PLillGF-RfqbaxgxkKgKk1XlJAVCX31xRI)  — Brad Traversy.
+This repo includes my changes (noted above).
+
+## License
+MIT License
